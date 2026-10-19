@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UA GAMES</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#040816;--card:#0d1426;--tx:#fff;--mut:#9aa6c4;--bd:#1c2644;--ac:#2d9cdb;--hd:#040816}
+:root[data-theme="light"]{--bg:#f2f5fb;--card:#fff;--tx:#0b1226;--mut:#5d6a8a;--bd:#d9e0ef;--hd:#fff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,Segoe UI,sans-serif;padding-bottom:70px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:6}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--hd);display:flex;align-items:center;gap:14px;padding:12px 16px}
+.logo{font:900 1.5rem Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;letter-spacing:1px;text-transform:uppercase;flex:1;white-space:nowrap}
+.logo b{color:var(--ac)}
+.ic{background:none;border:0;color:var(--tx);padding:6px;cursor:pointer;font-size:1.35rem;line-height:1}
+#sw{display:none;padding:0 16px 10px;background:var(--hd);position:sticky;top:calc(env(safe-area-inset-top,0px) + 58px);z-index:4}
+#q{width:100%;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;font:inherit}
+main{max-width:1000px;margin:auto;padding:6px 16px}
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:6px 0 12px}
+.links a{color:#fff;text-decoration:none;font-weight:700;font-size:.8rem;text-align:center;padding:9px 6px;border-radius:8px}
+h2{font-size:1.25rem;margin:6px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(6,1fr)}}
+.card{position:relative;aspect-ratio:2/3;border-radius:10px;overflow:hidden;background:linear-gradient(160deg,#1e3a5f,#0d1426);border:1px solid var(--bd)}
+.card a.c{position:absolute;inset:0;color:#fff;text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sh{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 38%,rgba(0,0,0,0) 65%)}
+.bd{position:absolute;top:6px;right:6px;background:#12b84a;color:#fff;font-weight:800;font-size:.6rem;padding:3px 6px;border-radius:5px;z-index:2}
+.tx{position:relative;padding:8px;z-index:2}
+.cat{letter-spacing:2px;font-size:.55rem;text-transform:uppercase;color:#c8d0e6;margin-bottom:2px}
+.nm{font-weight:800;font-size:.78rem;line-height:1.2}
+.ds{font-size:.6rem;color:#c8d0e6;margin-top:3px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.mt{margin-top:4px;font-size:.62rem;color:#c8d0e6}.mt i{opacity:.5;margin:0 6px;font-style:normal}
+.init{position:absolute;top:30%;left:0;right:0;text-align:center;font-size:2.6rem;font-weight:900;color:rgba(255,255,255,.2)}
+.act{position:absolute;top:10px;left:10px;display:flex;gap:6px;z-index:3}
+button{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:9px 14px;font-weight:700;cursor:pointer;font-size:.9rem}
+button.g{background:rgba(0,0,0,.55);color:#fff;padding:5px 9px;font-size:.75rem}button.r{background:#e5384f;padding:5px 9px;font-size:.75rem}button.o{background:transparent;color:var(--mut);border:1px solid var(--bd)}
+.add{display:flex;align-items:center;justify-content:center;font-size:3.5rem;color:var(--ac);border:2px dashed var(--ac);background:transparent;cursor:pointer}
+#md{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9;align-items:center;justify-content:center;padding:16px}
+.box{background:var(--card);color:var(--tx);border-radius:14px;padding:16px;width:100%;max-width:420px;max-height:90vh;overflow:auto}
+input,textarea{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px;margin:4px 0;font:inherit}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tiny{font-size:.8rem;color:var(--mut)}
+#bar{display:none;position:fixed;bottom:0;left:0;right:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hd);border-top:1px solid var(--bd);justify-content:space-between;align-items:center;gap:8px;z-index:8}
+#dt{display:none;max-width:700px;margin:auto;padding:12px 16px}
+.dc{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:14px}
+.dh{display:flex;gap:14px;align-items:center}.dh img,.di{width:96px;height:130px;object-fit:cover;border-radius:10px;flex:none}
+.di{background:linear-gradient(160deg,#1e3a5f,#0d1426);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:900;color:rgba(255,255,255,.3)}
+.dn{font-size:1.3rem;margin:0 0 8px}.ch{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ch span{border:1px solid var(--bd);border-radius:20px;padding:4px 12px;font-size:.8rem;background:rgba(45,156,219,.12)}.ch em{font-style:normal;color:var(--mut);font-size:.85rem}
+.sp{display:flex;gap:12px;align-items:center}.hr{width:44px;height:44px;border-radius:50%;background:#1e3a8a;color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.sp p{margin:2px 0 8px;color:var(--mut);font-size:.85rem}
+.bt{display:inline-block;background:var(--ac);color:#fff;text-decoration:none;font-weight:700;padding:10px 20px;border-radius:10px}
+.bt.big{display:block;text-align:center;margin-top:12px;padding:14px;font-size:1.05rem;background:linear-gradient(90deg,#08a8ff,#2563ff)}
+.rd{color:var(--ac);font-weight:700;margin-bottom:12px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--ac);margin-right:8px}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tl div{background:rgba(128,140,170,.12);border-radius:10px;padding:12px 6px;text-align:center}
+.tl b{display:block;color:var(--ac);word-break:break-word}.tl small{color:var(--mut)}
+.dd{color:var(--mut);margin:14px 0 0;line-height:1.5}.cp{display:block;margin:10px auto 0;padding:10px 22px}
+</style></head><body>
+<header><div class="logo" id="logo"></div>
+<button class="ic" id="sb" title="Search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+<button class="ic" id="th" title="Theme">☀</button>
+<button class="ic" id="devbtn" title="Developer"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></button></header>
+<div id="sw"><input id="q" placeholder="Search games..."></div>
+<main><div class="links" id="links"></div><h2>Trending Games</h2><div class="grid" id="grid"></div></main><div id="dt"></div>
+<div id="bar"><span class="tiny">Developer mode</span><span><button id="el" class="o">Edit links</button> <button id="sv">Download index.html</button> <button class="o" id="ex">Exit</button></span></div>
+<div id="md"><div class="box" id="bx"></div></div>
+<script id="state" type="application/json">{"site":"UA GAMES","links":[{"l":"Support","u":"https://example.com","c":"#3aa655"}],"games":[{"id":1,"name":"Sample Game 1","link":"https://example.com","desc":"Edit or delete this sample in Developer mode.","cat":"Action","year":"2026","size":"120 MB","badge":"V 1.0","img":""},{"id":2,"name":"Sample Game 2","link":"https://example.com","desc":"Add your own games with the + card.","cat":"Puzzle","year":"2026","size":"80 MB","badge":"V 1.0","img":""}]}</script>
+<script>
+let S=JSON.parse(document.getElementById('state').textContent),dev=false,edit=null,img='',artifact=null;
+const PWH='d8c243f0e8e5ed71232ced1ac01415faeac35de70511795fe5a39332c05bdcdb';
+const $=s=>document.querySelector(s),esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safe=u=>/^https?:\/\//i.test(u)?u:'#',col=c=>/^#[0-9a-f]{3,8}$/i.test(c)?c:'#2d9cdb';
+async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+function render(){
+  const w=S.site.trim().split(' ');$('#logo').innerHTML=esc(w[0])+(w[1]?' <b>'+esc(w.slice(1).join(' '))+'</b>':'');
+  $('#links').innerHTML=S.links.filter(l=>l.l).map(l=>`<a href="${esc(safe(l.u))}" target="_blank" rel="noopener" style="background:${col(l.c)}">${esc(l.l)}</a>`).join('');
+  const q=$('#q').value.toLowerCase(),L=S.games.filter(g=>(g.name+g.desc+g.cat).toLowerCase().includes(q));
+  $('#grid').innerHTML=(dev?'<div class="card add" id="plus">+</div>':'')+L.map(g=>`<div class="card">${g.img?`<img src="${esc(g.img)}" alt="">`:`<div class="init">${esc((g.name||'?')[0].toUpperCase())}</div>`}<div class="sh"></div>${(g.badge||g.version)?`<div class="bd">${esc(g.badge||('V '+g.version))}</div>`:''}<a class="c" href="#" data-v="${g.id}"><div class="tx"><div class="cat">${esc(g.cat)}</div><div class="nm">${esc(g.name)}</div>${g.desc?`<div class="ds">${esc(g.desc)}</div>`:''}<div class="mt">${esc(g.year)}${g.year&&g.size?'<i>|</i>':''}${esc(g.size)}</div></div></a>${dev?`<div class="act"><button class="g" data-e="${g.id}">Edit</button><button class="r" data-d="${g.id}">Delete</button></div>`:''}</div>`).join('');
+  if(!L.length&&!dev)$('#grid').innerHTML='<div class="tiny">No games found.</div>';
+  document.querySelectorAll('[data-v]').forEach(a=>a.onclick=ev=>{ev.preventDefault();openD(S.games.find(g=>g.id==a.dataset.v))});
+  $('#bar').style.display=dev?'flex':'none';
+  if(dev){$('#plus').onclick=()=>openM();
+    document.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>openM(S.games.find(g=>g.id==b.dataset.e)));
+    document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{if(confirm('Delete this game?')){S.games=S.games.filter(g=>g.id!=b.dataset.d);render()}})}
+}
+function openM(g){edit=g||null;img=g?g.img:'';const v=k=>esc(g?g[k]:'');
+  $('#bx').innerHTML=`<h3 style="margin-top:0">${g?'Edit game':'Add game'}</h3><input id="gn" placeholder="Game name" value="${v('name')}"><input id="gl" placeholder="Game link (https://...)" inputmode="url" value="${v('link')}"><textarea id="gd" rows="3" placeholder="Description">${v('desc')}</textarea>
+<div class="two"><input id="gc" placeholder="Category (Action...)" value="${v('cat')}"><input id="gv" placeholder="Version (1.0.2)" value="${v('version')}"><input id="gb" placeholder="Badge text (optional)" value="${v('badge')}"><input id="gy" placeholder="Year" value="${v('year')}"><input id="gz" placeholder="Size (120 MB)" value="${v('size')}"><input id="gp" placeholder="Platform (PC, Android)" value="${v('platform')}"></div>
+<label class="tiny">Game photo (poster)</label><input id="gi" type="file" accept="image/*"><img id="pv" style="max-width:100%;max-height:200px;border-radius:8px;${img?'':'display:none'}" src="${esc(img)}">
+<div style="display:flex;gap:8px;margin-top:8px"><button id="gs">Save game</button><button class="o" id="gx">Cancel</button></div>`;
+  $('#md').style.display='flex';$('#gx').onclick=()=>$('#md').style.display='none';
+  $('#gi').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const w=400,h=600,c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d'),s=Math.max(w/im.width,h/im.height),dw=im.width*s,dh=im.height*s;x.drawImage(im,(w-dw)/2,(h-dh)/2,dw,dh);img=c.toDataURL('image/jpeg',.8);$('#pv').src=img;$('#pv').style.display='block'};im.src=r.result};r.readAsDataURL(f)};
+  $('#gs').onclick=()=>{const n=$('#gn').value.trim(),l=$('#gl').value.trim();if(!n||!/^https?:\/\//i.test(l))return alert('Enter a name and a link starting with https://');
+    const o={name:n,link:l,desc:$('#gd').value.trim(),cat:$('#gc').value.trim(),badge:$('#gb').value.trim(),version:$('#gv').value.trim(),year:$('#gy').value.trim(),size:$('#gz').value.trim(),platform:$('#gp').value.trim(),img};
+    if(edit)Object.assign(edit,o);else S.games.unshift({id:Date.now(),...o});$('#md').style.display='none';render()}}
+function openD(g){if(!g)return;const l=S.links[0];
+  $('#dt').innerHTML=`<button class="o" id="bk" style="margin:0 0 12px">← Back</button>
+<div class="dc dh">${g.img?`<img src="${esc(g.img)}" alt="">`:`<div class="di">${esc((g.name||'?')[0].toUpperCase())}</div>`}<div><h1 class="dn">${esc(g.name)}</h1><div class="ch">${g.cat?`<span>${esc(g.cat)}</span>`:''}${g.platform?`<span>${esc(g.platform)}</span>`:''}${g.size?`<em>${esc(g.size)}</em>`:''}</div></div></div>
+${l&&l.l?`<div class="dc sp"><div class="hr">♥</div><div><b>Support ${esc(S.site)}</b><p>Help us keep new games coming.</p><a class="bt" href="${esc(safe(l.u))}" target="_blank" rel="noopener">♥ ${esc(l.l)}</a></div></div>`:''}
+<div class="dc"><div class="rd"><span class="dot"></span>Ready</div>
+<div class="tl"><div><b>${esc(g.version?('V '+g.version):(g.badge||'-'))}</b><small>Version</small></div><div><b>${esc(g.size||'-')}</b><small>File size</small></div><div><b>${esc(g.year||'-')}</b><small>Year</small></div></div>
+${g.desc?`<p class="dd">${esc(g.desc)}</p>`:''}
+<a class="bt big" href="${esc(safe(g.link))}" target="_blank" rel="noopener">Download / Play Now</a>
+<button class="o cp" id="cpl">Copy Link</button></div>`;
+  $('main').style.display='none';$('#dt').style.display='block';window.scrollTo(0,0);
+  $('#bk').onclick=()=>{$('#dt').style.display='none';$('main').style.display=''};
+  $('#cpl').onclick=async()=>{try{await navigator.clipboard.writeText(g.link);$('#cpl').textContent='Copied!'}catch(e){$('#cpl').textContent='Copy failed'}}}
+$('#el').onclick=()=>{$('#bx').innerHTML='<h3 style="margin-top:0">Edit links</h3><input id="sn" placeholder="Site name" value="'+esc(S.site)+'">'+S.links.map((l,i)=>`<div class="two"><input data-l="${i}" data-k="l" placeholder="Button name" value="${esc(l.l)}"><input data-l="${i}" data-k="u" placeholder="https://..." value="${esc(l.u)}"></div>`).join('')+'<div style="display:flex;gap:8px;margin-top:8px"><button id="ls">Save</button><button class="o" id="lx">Cancel</button></div>';
+  $('#md').style.display='flex';$('#lx').onclick=()=>$('#md').style.display='none';
+  $('#ls').onclick=()=>{S.site=$('#sn').value.trim()||S.site;document.querySelectorAll('[data-l]').forEach(x=>S.links[x.dataset.l][x.dataset.k]=x.value.trim());$('#md').style.display='none';render()}};
+$('#sb').onclick=()=>{const s=$('#sw');s.style.display=s.style.display==='block'?'none':'block';if(s.style.display==='block')$('#q').focus()};
+$('#th').onclick=()=>{const r=document.documentElement,l=r.dataset.theme==='light';if(l)r.removeAttribute('data-theme');else r.dataset.theme='light';$('#th').textContent=l?'☀':'🌙'};
+$('#q').oninput=render;
+$('#devbtn').onclick=async()=>{const p=prompt('Enter developer password');if(!p)return;let h='';try{h=await sha(p)}catch(e){}if(h===PWH){dev=true;render()}else alert('Wrong password')};
+$('#ex').onclick=()=>{dev=false;render()};
+$('#sv').onclick=async()=>{
+  const c=document.documentElement.cloneNode(true);c.removeAttribute('data-theme');c.removeAttribute('style');['#grid','#links','#bx','#logo','#dt'].forEach(s=>c.querySelector(s).innerHTML='');['#md','#bar','#sw','#dt','main'].forEach(s=>c.querySelector(s).removeAttribute('style'));c.querySelector('#th').textContent='☀';
+  c.querySelector('#state').textContent=JSON.stringify(S).replace(/</g,'\\u003c');
+  const blob=new Blob(['<!DOCTYPE html>\n'+c.outerHTML],{type:'text/html'}),l=document.createElement('a');l.href=URL.createObjectURL(blob);l.download='index.html';document.body.appendChild(l);l.click();l.remove();alert('index.html downloaded. Upload it to GitHub (replace the old index.html) to update the live site.')};
+render();
+</script></body></html>
